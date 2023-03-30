@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+  <meta charset="UTF-8" />
+  <!---<title> Responsive Registration Form | CodingLab </title>--->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="https://code.jquery.com/jquery-migrate-git.min.js"></script>
+  <link type="text/css" rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" />
+  <!-- emojis 😁! -->
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="svg4everybody.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/emojione/2.2.7/lib/js/emojione.min.js"></script>
+
+  <link type="text/css" rel="stylesheet" th:href="@{/node_modules/password-strength-meter/dist/password.min.css}" />
+  <script th:src="@{/node_modules/password-strength-meter/dist/password.min.js}"></script>
+  <script type="text/javascript">
+        jQuery(document).ready(function($) {
+          // emojis 😁! See #password5 for more details
+          emojione.imageType = 'svg';
+          emojione.sprints = true;
+          emojione.imagePathSVGSprites = 'https://github.com/Ranks/emojione/raw/master/assets/sprites/emojione.sprites.svg';
+
+          // Default behavior
+          $('#password').password();
+
+
+});
+
+
+
+    </script>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link th:href="@{/style.css}" rel="stylesheet">
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+  <style th:inline="text">
+.pass-colorbar{
+
+background-image:url([[@{/passwordstrength.jpg}]]);
+}
+  </style>
+</head>
+<body>
+<div class="container">
+<!--   -->
+  <div th:if="${success}" class="alert">
+    User Successfully Registered!
+  </div>
+  <div class="title">Registration</div>
+  <div class="content">
+    <form
+            id="myForm"
+            th:action="@{/register}"
+            method="post"
+            novalidate
+    >
+      <div class="user-details">
+        <div class="input-box">
+          <span class="details">Full Name</span>
+          <input
+                  type="text"
+                  placeholder="Enter your name"
+                  id="fullname"
+                  name="fullName"
+                  required
+          />
+          <label
+                  for="fullname"
+                  id="efullname"
+                  class="field_validation"
+          ></label>
+        </div>
+        <div class="input-box">
+          <span class="details">Username</span>
+          <input
+                  type="text"
+                  placeholder="Enter your username"
+                  id="username"
+                  name="username"
+                  required
+          />
+          <label
+                  for="fullname"
+                  id="eusername"
+                  class="field_validation"
+          ></label>
+        </div>
+        <div class="input-box">
+          <span class="details">Email</span>
+          <input
+                  type="text"
+                  placeholder="Enter your email"
+                  id="email"
+                  name="email"
+                  required
+          />
+          <label
+                  for="fullname"
+                  id="eemail"
+                  class="field_validation"
+          ></label>
+        </div>
+        <div class="input-box">
+          <span class="details">Phone Number</span>
+          <input
+                  type="text"
+                  placeholder="Enter your number"
+                  id="phoneNumber"
+                  name="phoneNo"
+                  required
+          />
+          <label
+                  for="fullname"
+                  id="ephoneNumber"
+                  class="field_validation"
+          ></label>
+        </div>
+        <div class="input-box">
+          <span class="details">Password</span>
+          <input
+                  type="text"
+                  placeholder="Enter your password"
+                  id="password"
+                  name="password"
+                  required
+          />
+        </div>
+        <div class="input-box">
+          <label
+                  for="password"
+                  id="epassword"
+                  class="field_validation"
+          ></label>
+          <label
+                  for="password"
+                  id="epassword_Upper_Lower_Case"
+                  class="field_validation"
+          ></label>
+          <label
+                  for="password"
+                  id="epassword_char_length"
+                  class="field_validation"
+          ></label>
+          <label
+                  for="password"
+                  id="epassword_special_char"
+                  class="field_validation"
+          ></label>
+          <label
+                  for="password"
+                  id="epassword_num"
+                  class="field_validation"
+          ></label>
+        </div>
+        <div class="input-box">
+          <span class="details">Confirm Password</span>
+          <input
+                  type="text"
+                  placeholder="Confirm your password"
+                  id="cPassword"
+                  required
+          />
+          <label
+                  for="fullname"
+                  id="ecPassword"
+                  class="field_validation"
+          ></label>
+        </div>
+      </div>
+      <div class="g-recaptcha" data-sitekey="6LdcOi4lAAAAAInWSQP8-DmPdCEVAtR4V0XT4ms8"></div>
+      <div th:if="${captchaError}" class="loginError">* Please Validate Captcha</div>
+      <!--      <div class="g-recaptcha" data-sitekey="6LfZVyglAAAAAOQVWRApQk8SG_VGhIfVToOgEPot"></div>-->
+      <div class="button">
+        <input type="submit" value="Register" />
+      </div>
+    </form>
+  </div>
+</div>
+
+<script th:src="@{/main.js}"></script>
+<script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-70920203-4', 'auto');
+      ga('send', 'pageview');
+    </script>
+</body>
+</html>
