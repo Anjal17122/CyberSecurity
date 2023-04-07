@@ -135,7 +135,6 @@ form.addEventListener("submit", function (event) {
     form.submit();
     }
   }
-   all fields are valid, submit the form
+  // all fields are valid, submit the form
   event.preventDefault();
-//    form.submit();
 });
