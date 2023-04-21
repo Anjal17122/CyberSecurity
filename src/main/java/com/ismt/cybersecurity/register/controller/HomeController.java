@@ -10,6 +10,6 @@ public class HomeController {
     @GetMapping("/home")
     public String getHomePage(Model model){
 //        return "index";
-        return "PasswordChecker";
+        return "index";
     }
 }
